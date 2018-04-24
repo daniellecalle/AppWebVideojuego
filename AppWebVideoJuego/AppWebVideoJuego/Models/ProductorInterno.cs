@@ -15,7 +15,7 @@
 			public ProductorInterno() { }
 
 			public ProductorInterno(string cargo, string cedula, string nombre, string apellido,
-				string telefono, string direccion) : base(cedula,nombre, direccion,apellido, telefono)
+				string telefono, string direccion) : base(cedula, nombre, direccion,apellido, telefono)
 			{
 				this.cargo = cargo;
 			}
