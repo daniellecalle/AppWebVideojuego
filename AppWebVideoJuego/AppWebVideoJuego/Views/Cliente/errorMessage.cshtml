@@ -1,0 +1,14 @@
+﻿
+@{
+	ViewBag.Title = "errorMessage";
+}
+
+<div class="alert alert-warning alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<strong>Error!</strong>No Ingrese Todos Los campos. Por Favor Ingrese su Informacion
+</div>
+
+<center>
+	@Html.ActionLink("Atras", "Index", "Cliente", new { area = "" }, new { @class = "btn btn-warning" })
+</center>
+

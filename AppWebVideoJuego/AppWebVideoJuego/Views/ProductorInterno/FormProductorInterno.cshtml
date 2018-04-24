@@ -1,0 +1,44 @@
+﻿
+@{
+	ViewBag.Title = "FormProductorInterno";
+}
+
+<div class="container">
+	<h2>Nuevo Productor Interno</h2>
+
+	<div class="panel panel-default">
+		<div class="panel-heading"></div>
+		<div class="panel-body">
+			<center>
+				<form method="post" action="/ProductorInterno/Created">
+					<div class="form-group">
+						<label>Nombre: </label>
+						<input type="text" class="form-control" placeholder="Nombre  Productor Interno" name="txtNombre">
+					</div>
+					<div class="form-group">
+						<label>Apellido: </label>
+						<input type="text" class="form-control" placeholder="Apellido del Productor Interno"
+							   name="txtApellido">
+					</div>
+					<div class="form-group">
+						<label>Telefono: </label>
+						<input type="text" class="form-control" placeholder="Telefono del Productor Interno"
+							   name="txtTelefono">
+					</div>
+					<div class="form-group">
+						<label>Direccion: </label>
+						<input type="text" class="form-control" placeholder="Direccion de Productor Interno"
+							   name="txtDireccion">
+					</div>
+					<div class="form-group">
+						<label>Cargo: </label>
+						<input type="text" class="form-control" placeholder="Cargo del Productor Interno"
+							   name="txtNit">
+					</div>
+					<input type="submit" name="btnGuardar" value="Guardar" class="btn btn-primary" />
+				</form>
+			</center>
+		</div>
+	</div>
+</div>
+

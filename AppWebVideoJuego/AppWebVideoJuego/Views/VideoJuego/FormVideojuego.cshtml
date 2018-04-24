@@ -1,0 +1,62 @@
+﻿
+@{
+	ViewBag.Title = "FormVideojuego";
+}
+
+<div class="container">
+	<br />
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<center><b>Nuevo Video Juego</b></center>
+		</div>
+		<div class="panel-body">
+			<center>
+				<div class="row">
+					<form method="post" action="/VideoJuego/Created">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Nombre: </label>
+								<input type="text" class="form-control" placeholder="Nombre del videojuego"
+									   name="txtNombre">
+							</div>
+							<div class="form-group">
+								<label>Objetivo: </label>
+								<input type="text" class="form-control" placeholder="Objetivo del Video Juego"
+									   name="txtObjetivo" />
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Tipo Recurso: </label>
+								<select name="cbTipoRecurso" class="form-control">
+									<option value="">Seleccione...</option>
+									<option value="1"></option>
+									<option value="2"></option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>Nombre Recurso: </label>
+								<input type="text" class="form-control" placeholder="Nombre del Recurso videojuego"
+									   name="txtNombreRecurso" />
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Publico Objetivo: </label>
+								<input type="text" class="form-control" placeholder="Publico Objetivo"
+									   name="txtPublicoObjetivo" />
+							</div>
+							<div class="form-group">
+								<label>Costo: </label>
+								<input type="number" class="form-control" placeholder="Costo del Video Juego"
+									   name="txtCosto" />
+							</div>
+						</div>
+						<input type="submit" name="btnGuardar" value="Guardar" class="btn btn-primary" />
+					</form>
+				</div>
+			</center>
+		</div>
+	</div>
+</div>
+
