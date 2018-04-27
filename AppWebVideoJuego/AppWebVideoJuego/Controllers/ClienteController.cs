@@ -42,22 +42,7 @@
 			}
 			else
 			{
-				try
-				{
-					a = con.Conectar();
-				}
-				catch (Exception ex)
-				{
-					throw ex;
-				}
-
-				string sql = "INSERT INTO TBLCLIENTE VALUES ('" + objC.GetCedula() + "', '" + objC.GetNombre()
-					+ "','" + objC.GetApellido() + "', '" + objC.GetTelefono() + "', '" + objC.GetDireccion()
-					+ "', '" + objC.GetNit() + "', '" + objC.GetTipoCliente() + "')";
-
-				int n = con.operaracion(sql, a);
-
-				if (n != 0)
+				if (objC.Guardar() != 0)
 				{
 					return View("MostrarClientes");
 				}

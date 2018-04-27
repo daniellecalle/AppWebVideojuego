@@ -11,8 +11,7 @@
 
 	public class EstadoController : Controller
 	{
-		Conexion con = new Conexion();
-		SqlConnection a;
+		
 		Estado objEst;
 
 		// GET: Estado
@@ -24,32 +23,20 @@
 		[HttpPost]
 		public ActionResult Created()
 		{
-			string nombre = Request["txtNombre"];
-			string descripcion = Request["txtDescripcion"];
-			Color c = ColorTranslator.FromHtml(Request["fvColor"]);
-			string color = ColorTranslator.ToHtml(c);
-			objEst = new Estado(nombre, color, descripcion);
+			objEst = new Estado();
 
+			objEst.SetNombre(Request["txtNombre"]);
+			objEst.SetDescripcion(Request["txtDescripcion"]);
+			Color c = ColorTranslator.FromHtml(Request["fvColor"]);
+			objEst.SetColor(ColorTranslator.ToHtml(c));
+			
 			if (!objEst.Validar())
 			{
 				return View("NuevoEstado");
 			}
 			else
 			{
-				try
-				{
-					a = con.Conectar();
-				}
-				catch (Exception)
-				{
-					throw;
-				}
-
-				string sql = "INSERT INTO TBLESTADO VALUES ('" + objEst.GetNombre() + "', '" + objEst.GetColor()
-					+ "', '" + objEst.GetDescripcion() + "')";
-				int n = con.operaracion(sql, a);
-
-				if (n != 0)
+				if (objEst.Guardar() != 0)
 				{
 					return View("ShowEstados");
 				}
@@ -57,9 +44,7 @@
 				{
 					return View("MessageError");
 				}
-
 			}
-
 		}
 
 

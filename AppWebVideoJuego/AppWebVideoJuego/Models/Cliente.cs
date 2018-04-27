@@ -2,15 +2,21 @@
 {
 	using System;
 	using System.Collections.Generic;
+	using System.Data.SqlClient;
 	using System.Linq;
 	using System.Web;
 
 	public class Cliente : Persona
 	{
+		Conexion con = new Conexion();
+		SqlConnection a;
+
 		#region "Atributos"
 		private string nit;
 		private string tipoCliente;
 		#endregion
+
+		public Cliente() { }
 
 		#region "Contructores"
 		public Cliente(string nit, string tipoCliente, string cedula, string nombre,
@@ -56,6 +62,27 @@
 				return false;
 			}
 		}
+
+		public int Guardar()
+		{
+			try
+			{
+				a = con.Conectar();
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
+
+			string sql = "INSERT INTO TBLCLIENTE VALUES ('" + GetCedula() + "', '" + GetNombre()
+				+ "','" + GetApellido() + "', '" + GetTelefono() + "', '" + GetDireccion()
+				+ "', '" + GetNit() + "', '" + GetTipoCliente() + "')";
+
+			int n = con.operaracion(sql, a);
+
+			return n;
+		}
+
 		#endregion
 
 	}
