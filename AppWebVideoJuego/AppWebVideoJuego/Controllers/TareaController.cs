@@ -3,16 +3,13 @@
 	using AppWebVideoJuego.Models;
 	using System;
 	using System.Collections.Generic;
-	using System.Data.SqlClient;
 	using System.Linq;
 	using System.Web;
 	using System.Web.Mvc;
 
 	public class TareaController : Controller
 	{
-		Conexion con = new Conexion();
-		SqlConnection a;
-		SqlDataReader datos;
+
 		Tarea objT;
 
 		// GET: Tarea
@@ -24,12 +21,13 @@
 		[HttpPost]
 		public ActionResult Created()
 		{
-			string nombre = Request["txtNombre"];
-			string descripcion = Request["txtDescripcion"];
-			string fecha = Request["txtFecha"];
-			string hora = Request["txtHora"];
 
-			objT = new Tarea(nombre, descripcion, fecha, hora);
+			objT = new Tarea();
+
+			objT.SetNombre(Request["txtNombre"]);
+			objT.SetDescripcion(Request["txtDescripcion"]);
+			objT.SetFecha(Request["txtFecha"]);
+			objT.SetHora(Request["txtHora"]);
 
 			if (!objT.Validar())
 			{
@@ -37,22 +35,7 @@
 			}
 			else
 			{
-				try
-				{
-					a = con.Conectar();
-				}
-				catch (Exception)
-				{
-					throw;
-				}
-
-				string sql = "INSERT INTO TBLTAREA (NOMBRE, DESCRIPCION, FECHA, HORA) " +
-					"VALUES ('" + objT.GetNombre() + "', '" + objT.GetDescripcion() + "', '" + objT.GetFecha()
-					+ "', '" + objT.GetHora() + "')";
-
-				int n = con.operaracion(sql, a);
-
-				if (n != 0)
+				if (objT.Guardar() != 0)
 				{
 					return View("ShowTareas");
 				}
@@ -63,24 +46,6 @@
 			}
 		}
 
-		[HttpPost]
-		public ActionResult Read()
-		{
-
-			try
-			{
-				a = con.Conectar();
-			}
-			catch (Exception)
-			{
-				throw;
-			}
-
-			string sql = "SELECT * FROM TBLTAREA";
-			datos = con.Consulta(sql, a);
-			Console.WriteLine(datos);
-
-			return View("ShowTareas");
-		}
+		
 	}
 }
