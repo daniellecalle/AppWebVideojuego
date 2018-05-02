@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "_NuevoEquipo";
+}
+
+<h2>_NuevoEquipo</h2>
+
+<form method="post" action="/EquipoDesarrollo/Created">
+	<div class="form-group">
+		<label>Nombre: </label>
+		<input type="text" class="form-control" placeholder="Nombre Equipo"
+			   name="txtNombre">
+	</div>
+	<div class="form-group">
+		<label>Descripcion: </label>
+		<textarea class="form-control" name="txtDescripcion"></textarea>
+	</div>
+	<input type="submit" name="btnGuardar" value="Guardar" class="btn btn-primary" />
+</form>

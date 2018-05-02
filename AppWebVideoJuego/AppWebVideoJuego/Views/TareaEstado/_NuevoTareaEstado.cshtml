@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "_NuevoTareaEstado";
+}
+
+
+<form action="/TareaEstado/Created" method="post">
+	<div class="form-group">
+		<label>Seleccione Tarea: </label>
+		<select name="cbIdTarea" class="form-control">
+			<option value=""></option>
+		</select>
+	</div>
+	<div class="form-group">
+		<label>Seleccione Estado: </label>
+		<select name="cbIdEstado" class="form-control">
+			<option value=""></option>
+		</select>
+	</div>
+	<div class="form-group">
+		<label>Fecha: </label>
+		<input type="date" name="fecha" class="form-control" />
+	</div>
+	<div class="form-group">
+		<label>Hora: </label>
+		<input type="time" name="fecha" class="form-control" />
+	</div>
+	<div class="form-group">
+		<label>Color: </label>
+		<input type="color" name="fecha" class="form-control" value="#01DF3A"/>
+	</div>
+	<input type="submit" name="btnGuardar" value="Guardar" class="btn btn-primary" />
+</form>

@@ -84,9 +84,9 @@
 				{
 					a = con.Conectar();
 				}
-				catch (Exception)
+				catch (Exception ex)
 				{
-					throw;
+					throw ex;
 				}
 
 				string sql = "INSERT INTO TBLTAREA (NOMBRE, DESCRIPCION, FECHA, HORA) " +
@@ -97,8 +97,6 @@
 
 				return n;
 			}
-
-		
 
 		#endregion
 	}

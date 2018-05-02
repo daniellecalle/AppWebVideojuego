@@ -9,18 +9,7 @@
 		<div class="panel-heading">Nuevo Equipo</div>
 		<div class="panel-body">
 			<center>
-				<form method="post" action="/EquipoDesarrollo/Created">
-					<div class="form-group">
-						<label>Nombre: </label>
-						<input type="text" class="form-control" placeholder="Nombre Equipo"
-							   name="txtNombre">
-					</div>
-					<div class="form-group">
-						<label>Descripcion: </label>
-						<textarea class="form-control" name="txtDescripcion"></textarea>
-					</div>
-					<input type="submit" name="btnGuardar" value="Guardar" class="btn btn-primary" />
-				</form>
+				@Html.Partial("_NuevoEquipo");
 			</center>
 		</div>
 	</div>

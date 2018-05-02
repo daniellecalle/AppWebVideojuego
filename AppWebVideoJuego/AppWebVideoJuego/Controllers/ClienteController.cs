@@ -10,8 +10,6 @@
 
 	public class ClienteController : Controller
 	{
-		Conexion con = new Conexion();
-		SqlConnection a;
 		Cliente objC;
 
 		// GET: Cliente

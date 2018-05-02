@@ -24,19 +24,18 @@
 		public ActionResult Created()
 		{
 			objEst = new Estado();
-
 			objEst.SetNombre(Request["txtNombre"]);
 			objEst.SetDescripcion(Request["txtDescripcion"]);
 			Color c = ColorTranslator.FromHtml(Request["fvColor"]);
 			objEst.SetColor(ColorTranslator.ToHtml(c));
-			
+
 			if (!objEst.Validar())
 			{
 				return View("NuevoEstado");
 			}
 			else
 			{
-				if (objEst.Guardar() != 0)
+				if (objEst.Guardar()!=0)
 				{
 					return View("ShowEstados");
 				}
@@ -46,8 +45,7 @@
 				}
 			}
 		}
-
-
+		
 
 	}
 }

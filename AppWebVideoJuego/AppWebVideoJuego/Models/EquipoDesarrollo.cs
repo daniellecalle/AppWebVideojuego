@@ -2,13 +2,17 @@
 {
 	using System;
 	using System.Collections.Generic;
+	using System.Data.SqlClient;
 	using System.Linq;
 	using System.Web;
 
 	public class EquipoDesarrollo
 	{
+		Conexion con = new Conexion();
+		SqlConnection a;
+
 		#region "Atributos"
-			private string nombre;
+		private string nombre;
 			private string descripcion;
 		#endregion
 
@@ -22,16 +26,43 @@
 			}
 		#endregion
 
-		#region "Metodos Publicos"
-			public string GetNombre()
+		#region "Propieades"
+			public string Nombre
 			{
-				return nombre;
+				get { return nombre; }
+				set { nombre = value; }
 			}
 
-			public void SetNombre(string nombre)
+			public string Descripcion
 			{
-				this.nombre = nombre;
+				get { return descripcion; }
+				set { descripcion = value; }
 			}
+		#endregion
+
+		#region "Metodos Publicos"
+		public bool Validar()
+		{
+			return (!String.IsNullOrEmpty(nombre) || !String.IsNullOrEmpty(descripcion));
+		}
+
+		public int Guardar()
+		{
+			try
+			{
+				a = con.Conectar();
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+
+			string sql = "INSERT INTO TBLEQUIPO VALUES('"+ Nombre +"', '"+ Descripcion +"')";
+
+			int n = con.operaracion(sql, a);
+
+			return n;
+		}
 		#endregion
 	}
 }
