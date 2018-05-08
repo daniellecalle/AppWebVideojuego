@@ -21,7 +21,6 @@
 		[HttpPost]
 		public ActionResult Created()
 		{
-
 			objT = new Tarea();
 
 			objT.SetNombre(Request["txtNombre"]);

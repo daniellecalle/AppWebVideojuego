@@ -5,6 +5,7 @@
 	using System.Data.SqlClient;
 	using System.Linq;
 	using System.Web;
+	
 
 	public class Tarea
 	{
@@ -12,11 +13,10 @@
 		SqlConnection a;
 
 		#region "Atributos"
-		private string nombre;
+			private string nombre;
 			private string descripcion;
 			private string fecha;
 			private string hora;
-			//private int estado;
 		#endregion
 
 		#region "Contructores"
@@ -97,6 +97,69 @@
 
 				return n;
 			}
+
+		/*public List<Tarea> ListarEquipos()
+		{ 
+
+			try
+			{
+				a = con.Conectar();
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+
+			List<Tarea> datos = new List<Tarea>();
+			SqlDataReader d;
+
+			string sql = "SELECT E.ID, E.NOMBRE FROM TBLTAREA T INNER JOIN TBLEQUIPO E ON T.IDEQUIPO = E.ID";
+
+			d = con.Consulta(sql, a);
+
+			while (d.Read())
+			{
+				datos.Add(new Tarea()
+				{
+					idEquipo = Convert.ToInt32(d["ID"]),
+					nomEquipo = Convert.ToString(d["NOMBRE"])
+				});
+
+			}
+
+			return datos;
+
+		}*/
+
+		/*public List<Tarea> ListarTareas()
+		{
+				try
+				{
+					a = con.Conectar();
+				}
+				catch (Exception)
+				{
+					throw;
+				}
+
+				List<Tarea> datos = new List<Tarea>();
+
+				string sql = "SELECT * FROM TBLTAREA";
+				SqlDataReader d = con.Consulta(sql, a);
+
+				while (d.Read())
+				{
+					datos.Add(new Tarea()
+					{
+						nombre = Convert.ToString(d["NOMBRE"]),
+						descripcion = Convert.ToString(d["DESCRIPCION"]),
+						fecha = Convert.ToString(d["FECHA"]),
+						hora = Convert.ToString(d["HORA"])
+					});
+				}
+
+				return datos;
+		}*/
 
 		#endregion
 	}
