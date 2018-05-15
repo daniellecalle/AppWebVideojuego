@@ -1,0 +1,20 @@
+﻿
+@{
+	ViewBag.Title = "_show";
+	List<AppWebVideoJuego.Models.Tarea> datos = (List<AppWebVideoJuego.Models.Tarea>)ViewData["listaTareas"];
+}
+
+<h2>Tareas</h2>
+
+<div class="panel panel-info">
+	<div class="panel-body">
+		@foreach (var obj in datos)
+		{
+			<p><b>ID: </b> @obj.GetId()</p>
+			<p><b>Nombre: </b> @obj.GetNombre()</p>
+			<p><b>Descripcion: </b> @obj.GetDescripcion()</p>
+			<p><b>Fecha: </b> @obj.GetFecha()</p>
+			<p><b>Hora: </b> @obj.GetHora()</p>
+		}
+	</div>
+</div>

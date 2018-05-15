@@ -2,17 +2,19 @@
 {
 	using System;
 	using System.Collections.Generic;
+	using System.ComponentModel.DataAnnotations;
 	using System.Data.SqlClient;
 	using System.Linq;
 	using System.Web;
 	
-
 	public class Tarea
 	{
 		Conexion con = new Conexion();
 		SqlConnection a;
 
 		#region "Atributos"
+			[Key]
+			private int id;
 			private string nombre;
 			private string descripcion;
 			private string fecha;
@@ -22,8 +24,9 @@
 		#region "Contructores"
 			public Tarea() { }
 
-			public Tarea(string nombre, string descripcion, string fecha, string hora)
+			public Tarea(int id, string nombre, string descripcion, string fecha, string hora)
 			{
+				this.id = id;
 				this.nombre = nombre;
 				this.descripcion = descripcion;
 				this.fecha = fecha;
@@ -72,6 +75,15 @@
 				this.hora = hora;
 			}
 
+			public int GetId()
+			{
+				return id;
+			}
+
+			public void SetId(int id)
+			{
+				this.id = id;
+			}
 
 			public bool Validar()
 			{
@@ -98,6 +110,42 @@
 				return n;
 			}
 
+		public int EditarTarea()
+		{
+			try
+			{
+				a = con.Conectar();
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+
+			string sql = "UPDATE TBLTAREA SET NOMBRE='"+GetNombre()+"', '"+GetDescripcion()
+				+"', '"+GetFecha()+"','"+GetHora()+"' WHERE ID = "+GetId();
+			int num = con.operaracion(sql, a);
+
+			return num;
+		}
+
+		public int EliminarTarea()
+		{
+			try
+			{
+				a = con.Conectar();
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+
+			string sql = "DELETE FROM TBLTAREA WHERE ID="+GetId();
+			int num = con.operaracion(sql, a);
+
+			return num;
+		}
+
+		
 		/*public List<Tarea> ListarEquipos()
 		{ 
 
@@ -131,7 +179,7 @@
 
 		}*/
 
-		/*public List<Tarea> ListarTareas()
+		public List<Tarea> ListarTareas()
 		{
 				try
 				{
@@ -151,6 +199,7 @@
 				{
 					datos.Add(new Tarea()
 					{
+						id = Convert.ToInt32(d["ID"]),
 						nombre = Convert.ToString(d["NOMBRE"]),
 						descripcion = Convert.ToString(d["DESCRIPCION"]),
 						fecha = Convert.ToString(d["FECHA"]),
@@ -159,7 +208,37 @@
 				}
 
 				return datos;
-		}*/
+		}
+
+		public List<Tarea> MostrarTareas()
+		{
+			try
+			{
+				a = con.Conectar();
+			}
+			catch (Exception e)
+			{
+				throw e;
+			}
+
+			string sql = "SELECT * FROM TBLTAREA WHERE ID="+GetId();
+			SqlDataReader d = con.Consulta(sql, a);
+			List<Tarea> lista = new List<Tarea>();
+
+			while (d.Read())
+			{
+				lista.Add(new Tarea()
+				{
+					id = Convert.ToInt32(d["ID"]),
+					nombre=Convert.ToString(d["NOMBRE"]),
+					descripcion = Convert.ToString(d["DESCRIPCION"]),
+					fecha = Convert.ToString(d["FECHA"]),
+					hora = Convert.ToString(d["HORA"]),
+				});
+			}
+
+			return lista;
+		}
 
 		#endregion
 	}

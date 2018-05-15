@@ -299,6 +299,13 @@
     <Content Include="Views\EquipoDesarrollo\_NuevoEquipo.cshtml" />
     <Content Include="Views\EquipoDesarrollo\mostrarEquipos.cshtml" />
     <Content Include="Views\EquipoDesarrollo\error.cshtml" />
+    <Content Include="Views\Tarea\Show.cshtml" />
+    <Content Include="Views\Tarea\_Show.cshtml" />
+    <Content Include="Views\Tarea\successEdit.cshtml" />
+    <Content Include="Views\Tarea\errorEdit.cshtml" />
+    <Content Include="Views\Tarea\successDelete.cshtml" />
+    <Content Include="Views\Tarea\errorDelete.cshtml" />
+    <Content Include="Views\Tarea\_edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
