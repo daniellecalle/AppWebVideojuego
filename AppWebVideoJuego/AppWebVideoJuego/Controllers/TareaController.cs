@@ -58,27 +58,27 @@
 		}
 
 		[HttpPost]
-		public ActionResult Edit()
+		public ActionResult ShowFormEdit()
 		{
 			objT = new Tarea();
+
+			//capturamos la informacion del formulario
 			objT.SetId(Convert.ToInt32(Request["id"]));
 			objT.SetNombre(Request["txtNombre"]);
 			objT.SetDescripcion(Request["txtDescripcion"]);
 			objT.SetFecha(Request["txtFecha"]);
 			objT.SetHora(Request["txtHora"]);
 
-			List<Tarea> objListaTareas = objT.MostrarTareas();
-			ViewData["listaTareas"] = objListaTareas;
+			//Enviamos los datos ala vista
+			ViewData["modelsTask"] = objT;
 
+			return View("_ShowFormEdit");
+		}
+		
 
-			if (objT.EditarTarea() != 0)
-			{
-				return View("successEdit");
-			}
-			else
-			{
-				return View("errorEdit");
-			}
+		public ActionResult SaveFormEdit()
+		{
+			return View();
 		}
 
 		[HttpPost]

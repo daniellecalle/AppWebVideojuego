@@ -1,7 +1,7 @@
 ﻿<div class="container">
 	@{
 		ViewBag.Title = "Show Tareas";
-		List<AppWebVideoJuego.Models.Tarea> datos = (List<AppWebVideoJuego.Models.Tarea>)ViewData["listaTareas"];		
+		List<AppWebVideoJuego.Models.Tarea> datos = (List<AppWebVideoJuego.Models.Tarea>)ViewData["listaTareas"];
 	}
 
 	<div class="alert alert-success alert-dismissible" role="alert">
@@ -42,9 +42,9 @@
 				</td>
 
 				<td>
-					<form action="/Tarea/Edit" method="post">
+					<form action="/Tarea/ShowFormEdit" method="post">
 						<input type="hidden" name="id" value="@obj.GetId()" />
-						<button type="submit" class="btn btn-warning" data-toggle="modal" 
+						<button type="submit" class="btn btn-warning" data-toggle="modal"
 								data-target=".bs-example-modal-lg">
 							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 							Editar
@@ -100,16 +100,15 @@
 		</div>
 	</div>
 
+
 	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<center>
-					@Html.Partial("_edit");
+					@Html.Partial("_ShowFormEdit");
 				</center>
 			</div>
 		</div>
 	</div>
-
-
 
 </div>

@@ -305,7 +305,7 @@
     <Content Include="Views\Tarea\errorEdit.cshtml" />
     <Content Include="Views\Tarea\successDelete.cshtml" />
     <Content Include="Views\Tarea\errorDelete.cshtml" />
-    <Content Include="Views\Tarea\_edit.cshtml" />
+    <Content Include="Views\Tarea\_ShowFormEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

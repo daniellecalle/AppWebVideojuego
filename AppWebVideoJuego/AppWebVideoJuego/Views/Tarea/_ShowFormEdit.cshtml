@@ -1,0 +1,42 @@
+﻿
+@{
+	ViewBag.Title = "ShowFormEdit";
+	AppWebVideoJuego.Models.Tarea model = (AppWebVideoJuego.Models.Tarea)ViewData["modelsTask"];
+}
+
+<form action="/Tarea/SaveFormEdit" method="post">
+		<h3><b>Editar Tarea </b></h3>
+		<div class="form-group">
+			<label>Nombre: </label>
+			<input type="text" class="form-control" required 
+				   value="gfdgf" name="txtNombre">
+		</div>
+		<div class="form-group">
+			<label>Descripcion: </label>
+			<textarea class="form-control" rows="3" name="txtDescripcion" 
+					  value="gfdgd"></textarea>
+		</div>
+
+		<div class="form-group">
+			<label>Fecha: </label>
+			<input type="date" name="txtFecha" class="form-control" 
+				   value="gfg">
+		</div>
+
+		<div class="form-group">
+			<label>Hora: </label>
+			<input type="time" name="txtHora" class="form-control" 
+				   value="fgf">
+		</div>
+
+		<div class="form-group">
+			<label>Seleccione Color Estado: </label>
+			<select name="cbEstado" class="form-control">
+				<option value=""></option>
+			</select>
+		</div>
+		<input type="submit" name="btnGuardar" value="Guardar" class="btn btn-primary" />
+</form>
+	
+
+	
