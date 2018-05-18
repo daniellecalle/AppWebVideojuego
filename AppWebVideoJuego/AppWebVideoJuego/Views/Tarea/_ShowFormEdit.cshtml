@@ -1,7 +1,7 @@
 ﻿
 @{
 	ViewBag.Title = "ShowFormEdit";
-	AppWebVideoJuego.Models.Tarea model = (AppWebVideoJuego.Models.Tarea)ViewData["modelsTask"];
+	AppWebVideoJuego.Models.Tarea model = (AppWebVideoJuego.Models.Tarea)ViewData["modeltask"];
 }
 
 <form action="/Tarea/SaveFormEdit" method="post">
@@ -9,24 +9,24 @@
 		<div class="form-group">
 			<label>Nombre: </label>
 			<input type="text" class="form-control" required 
-				   value="gfdgf" name="txtNombre">
+				   value="@Html.Raw(model.GetNombre())" name="txtNombre">
 		</div>
 		<div class="form-group">
 			<label>Descripcion: </label>
 			<textarea class="form-control" rows="3" name="txtDescripcion" 
-					  value="gfdgd"></textarea>
+					  value="@Html.Raw(model.GetDescripcion())"></textarea>
 		</div>
 
 		<div class="form-group">
 			<label>Fecha: </label>
 			<input type="date" name="txtFecha" class="form-control" 
-				   value="gfg">
+				   value="@Html.Raw(model.GetFecha())">
 		</div>
 
 		<div class="form-group">
 			<label>Hora: </label>
 			<input type="time" name="txtHora" class="form-control" 
-				   value="fgf">
+				   value="@Html.Raw(model.GetHora())">
 		</div>
 
 		<div class="form-group">

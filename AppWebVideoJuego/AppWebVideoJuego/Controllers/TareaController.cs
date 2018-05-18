@@ -47,14 +47,29 @@
 			}
 		}
 
-		[HttpPost]
-		public ActionResult Show() 
+		public ActionResult ShowAllTask()
 		{
 			objT = new Tarea();
-			objT.SetId(Convert.ToInt32(Request["id"]));
-			List<Tarea> objlistTareas = objT.MostrarTareas();
-			ViewData["listaTareas"] = objlistTareas;
+			List<Tarea> objListaTareas = objT.ListarTareas();
+			ViewData["listaTareas"] = objListaTareas;
 			return View("ShowTareas");
+		}
+
+		[HttpPost]
+		public ActionResult ShowForm() 
+		{ 
+			objT = new Tarea();
+
+			//Capuramos los datos
+			objT.SetId(Convert.ToInt32(Request["id"]));
+			objT.SetNombre(Request["nombre"]);
+			objT.SetDescripcion(Request["descripcion"]);
+			objT.SetFecha(Request["fecha"]);
+			objT.SetHora(Request["hora"]);
+
+			ViewData["model"] = objT;
+
+			return View("_Show");
 		}
 
 		[HttpPost]
@@ -64,15 +79,15 @@
 
 			//capturamos la informacion del formulario
 			objT.SetId(Convert.ToInt32(Request["id"]));
-			objT.SetNombre(Request["txtNombre"]);
-			objT.SetDescripcion(Request["txtDescripcion"]);
-			objT.SetFecha(Request["txtFecha"]);
-			objT.SetHora(Request["txtHora"]);
+			objT.SetNombre(Request["nombre"]);
+			objT.SetDescripcion(Request["descripcion"]);
+			objT.SetFecha(Request["fecha"]);
+			objT.SetHora(Request["hora"]);
 
 			//Enviamos los datos ala vista
-			ViewData["modelsTask"] = objT;
+			ViewData["modeltask"] = objT;
 
-			return View("_ShowFormEdit");
+			return View("ShowTareas");
 		}
 		
 

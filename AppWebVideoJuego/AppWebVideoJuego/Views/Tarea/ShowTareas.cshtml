@@ -3,7 +3,7 @@
 		ViewBag.Title = "Show Tareas";
 		List<AppWebVideoJuego.Models.Tarea> datos = (List<AppWebVideoJuego.Models.Tarea>)ViewData["listaTareas"];
 	}
-
+	 
 	<div class="alert alert-success alert-dismissible" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		<strong>Exito!</strong>Registro Ingresado Exitosamente!
@@ -32,8 +32,12 @@
 
 				<!--Botones control de show-->
 				<td>
-					<form action="/Tarea/Show" method="post">
+					<form action="/Tarea/ShowForm" method="post">
 						<input type="hidden" name="id" value="@obj.GetId()" />
+						<input type="hidden" name="nombre" value="@obj.GetNombre()" />
+						<input type="hidden" name="descripcion" value="@obj.GetDescripcion()" />
+						<input type="hidden" name="fecha" value="@obj.GetFecha()" />
+						<input type="hidden" name="hora" value="@obj.GetHora()" />
 						<button type="submit" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-sm">
 							<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
 							Mostrar
@@ -44,6 +48,10 @@
 				<td>
 					<form action="/Tarea/ShowFormEdit" method="post">
 						<input type="hidden" name="id" value="@obj.GetId()" />
+						<input type="hidden" name="nombre" value="@obj.GetNombre()" />
+						<input type="hidden" name="descripcion" value="@obj.GetDescripcion()" />
+						<input type="hidden" name="fecha" value="@obj.GetFecha()" />
+						<input type="hidden" name="hora" value="@obj.GetHora()" />
 						<button type="submit" class="btn btn-warning" data-toggle="modal"
 								data-target=".bs-example-modal-lg">
 							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
@@ -105,7 +113,7 @@
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<center>
-					@Html.Partial("_ShowFormEdit");
+					
 				</center>
 			</div>
 		</div>
