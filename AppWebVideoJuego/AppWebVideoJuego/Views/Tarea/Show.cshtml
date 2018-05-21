@@ -1,17 +1,16 @@
 ﻿
 @{
-	ViewBag.Title = "show";
+	ViewBag.Title = "Show";
+	AppWebVideoJuego.Models.Tarea model = (AppWebVideoJuego.Models.Tarea) ViewData["model"];
 }
 
 
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-	<div class="modal-dialog modal-sm" role="document">
-		<div class="modal-content">
-			<div class="panel panel-default">
-				<div class="panel-body">
-					@Html.Partial("_Show");
-				</div>
-			</div>
-		</div>
+<div class="panel panel-info">
+	<div class="panel-body">
+		<p><b>ID: </b> @Html.Raw(model.GetId())</p>
+		<p><b>Nombre: </b> @Html.Raw(model.GetNombre())</p>
+		<p><b>Descripcion: </b> @Html.Raw(model.GetDescripcion())</p>
+		<p><b>Fecha: </b> @Html.Raw(model.GetFecha())</p>
+		<p><b>Hora: </b> @Html.Raw(model.GetHora())</p>
 	</div>
 </div>

@@ -47,16 +47,16 @@
 			}
 		}
 
-		public ActionResult ShowAllTask()
+		public ActionResult ShowTareas() 
 		{
 			objT = new Tarea();
 			List<Tarea> objListaTareas = objT.ListarTareas();
 			ViewData["listaTareas"] = objListaTareas;
-			return View("ShowTareas");
+			return View();
 		}
 
 		[HttpPost]
-		public ActionResult ShowForm() 
+		public ActionResult Show() 
 		{ 
 			objT = new Tarea();
 
@@ -69,7 +69,7 @@
 
 			ViewData["model"] = objT;
 
-			return View("_Show");
+			return View();
 		}
 
 		[HttpPost]
@@ -85,15 +85,30 @@
 			objT.SetHora(Request["hora"]);
 
 			//Enviamos los datos ala vista
-			ViewData["modeltask"] = objT;
+			ViewData["model"] = objT;
 
-			return View("ShowTareas");
+			return View();
 		}
 		
 
 		public ActionResult SaveFormEdit()
 		{
-			return View();
+			objT = new Tarea();
+
+			objT.SetNombre(Request["id"]);
+			objT.SetNombre(Request["txtNombre"]);
+			objT.SetDescripcion(Request["txtDescripcion"]);
+			objT.SetFecha(Request["txtFecha"]);
+			objT.SetHora(Request["txtHora"]);
+
+			if (objT.EditarTarea() != 0)
+			{
+				return View();
+			}
+			else
+			{
+				return View();
+			}			
 		}
 
 		[HttpPost]
