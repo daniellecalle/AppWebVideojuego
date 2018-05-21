@@ -2,12 +2,16 @@
 @{
 	ViewBag.Title = "ShowFormEdit";
 	AppWebVideoJuego.Models.Tarea model = (AppWebVideoJuego.Models.Tarea)ViewData["model"];
+
 }
 
 <h2>ShowFormEdit</h2>
 
 <form action="/Tarea/SaveFormEdit" method="post">
-	<h3><b>Editar Tarea </b></h3>
+	<h3><b>Editar Tarea N° @Html.Raw(model.GetId())</b></h3>
+	
+	<input type="hidden" name="id" value="@Html.Raw(model.GetId())" />
+
 	<div class="form-group">
 		<label>Nombre: </label>
 		<input type="text" class="form-control" required
@@ -15,8 +19,8 @@
 	</div>
 	<div class="form-group">
 		<label>Descripcion: </label>
-		<textarea class="form-control" rows="3" name="txtDescripcion"
-				  value="@Html.Raw(model.GetDescripcion())"></textarea>
+		<input type="text" name="txtDescripcion" 
+			   value="@Html.Raw(model.GetDescripcion())" class="form-control"/>
 	</div>
 
 	<div class="form-group">

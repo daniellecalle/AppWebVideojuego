@@ -121,8 +121,8 @@
 				throw;
 			}
 
-			string sql = "UPDATE TBLTAREA SET NOMBRE='"+GetNombre()+"', '"+GetDescripcion()
-				+"', '"+GetFecha()+"','"+GetHora()+"' WHERE ID = "+GetId();
+			string sql = "UPDATE TBLTAREA SET NOMBRE='"+GetNombre()+"', DESCRIPCION='"+GetDescripcion()
+				+"', FECHA='"+GetFecha()+"', HORA='"+GetHora()+"' WHERE ID="+GetId();
 			int num = con.operaracion(sql, a);
 
 			return num;

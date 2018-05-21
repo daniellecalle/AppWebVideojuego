@@ -90,12 +90,12 @@
 			return View();
 		}
 		
-
+		[HttpPost]
 		public ActionResult SaveFormEdit()
 		{
 			objT = new Tarea();
 
-			objT.SetNombre(Request["id"]);
+			objT.SetId(Convert.ToInt32(Request["id"]));
 			objT.SetNombre(Request["txtNombre"]);
 			objT.SetDescripcion(Request["txtDescripcion"]);
 			objT.SetFecha(Request["txtFecha"]);
@@ -103,12 +103,14 @@
 
 			if (objT.EditarTarea() != 0)
 			{
-				return View();
+				return View("exitoEditar");
 			}
 			else
 			{
-				return View();
-			}			
+				return View("errorEditar");
+			}
+
+			
 		}
 
 		[HttpPost]
