@@ -1,6 +1,7 @@
 ﻿
 @{
 	ViewBag.Title = "mostrarEquipos";
+	List<AppWebVideoJuego.Models.EquipoDesarrollo> models = (List<AppWebVideoJuego.Models.EquipoDesarrollo>)ViewData["models"];
 }
 
 <div class="alert alert-success alert-dismissible" role="alert">
@@ -9,6 +10,47 @@
 </div>
 
 <h2>mostrarEquipos</h2>
+
+<table class="table table-bordered">
+	<tr>
+		<th>ID</th>
+		<th>Nombre</th>
+		<th colspan="3"></th>
+	</tr>
+
+	@foreach (var item in models)
+	{
+	<tr>
+		<td>@item.Id</td>
+		<td>@item.Nombre</td>
+		<td>
+			<form method="post" action="/EquipoDesarrollo/ShowEquipo">
+				<input type="hidden" name="id" value="@item.Id" />
+				<input type="hidden" name="nombre" value="@item.Nombre" />
+				<input type="hidden" name="descripcion" value="@item.Descripcion" />
+				<input type="submit" name="btnMostrar" value="Mostrar" class="btn btn-info" />
+			</form>
+		</td>
+
+		<td>
+			<form method="post" action="/EquipoDesarrollo/ShowFormEdit">
+				<input type="hidden" name="id" value="@item.Id" />
+				<input type="hidden" name="nombre" value="@item.Nombre" />
+				<input type="hidden" name="descripcion" value="@item.Descripcion" />
+				<input type="submit" name="btnMostrar" value="Editar" class="btn btn-warning" />
+			</form>
+		</td>
+
+		<td>
+			<form method="post" action="/EquipoDesarrollo/DeleteEquipment">
+				<input type="hidden" name="id" value="@item.Id" />
+				<input type="submit" name="btnMostrar" value="Mostrar" class="btn btn-danger" />
+			</form>
+		</td>
+	</tr>
+	}
+</table>
+
 
 <center>
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Nuevo</button> |

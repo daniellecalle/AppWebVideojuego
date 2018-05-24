@@ -1,0 +1,15 @@
+﻿
+@{
+	ViewBag.Title = "exitoEliminar";
+}
+
+<div class="alert alert-success alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<strong>Warning!</strong> Registro Eliminado Correctamente!
+</div>
+
+<center>
+	@Html.ActionLink("Atras", "mostrarEquipos", "EquipoDesarrollo", new { area = "" },
+			new { @class = "btn btn-success" })
+</center>
+

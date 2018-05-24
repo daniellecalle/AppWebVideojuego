@@ -11,10 +11,14 @@
 	{
 
 		Tarea objT;
+		EquipoDesarrollo E;
 
 		// GET: Tarea
 		public ActionResult Index()
 		{
+			E = new EquipoDesarrollo();
+			List<EquipoDesarrollo> lista = E.listarEquiposConTareas();
+			ViewData["models"]=lista;
 			return View("NuevaTarea");
 		}
 
@@ -25,8 +29,7 @@
 
 			objT.SetNombre(Request["txtNombre"]);
 			objT.SetDescripcion(Request["txtDescripcion"]);
-			objT.SetFecha(Request["txtFecha"]);
-			objT.SetHora(Request["txtHora"]);
+			objT.SetIdEquipo(Convert.ToInt32(Request["cbEquipo"]));
 
 			if (!objT.Validar())
 			{
@@ -64,8 +67,7 @@
 			objT.SetId(Convert.ToInt32(Request["id"]));
 			objT.SetNombre(Request["nombre"]);
 			objT.SetDescripcion(Request["descripcion"]);
-			objT.SetFecha(Request["fecha"]);
-			objT.SetHora(Request["hora"]);
+			objT.SetIdEquipo(Convert.ToInt32(Request["idEquipo"]));
 
 			ViewData["model"] = objT;
 
@@ -77,12 +79,15 @@
 		{
 			objT = new Tarea();
 
+			E = new EquipoDesarrollo();
+			List<EquipoDesarrollo> lista = E.listarEquiposConTareas();
+			ViewData["models"] = lista;
+
 			//capturamos la informacion del formulario
 			objT.SetId(Convert.ToInt32(Request["id"]));
 			objT.SetNombre(Request["nombre"]);
 			objT.SetDescripcion(Request["descripcion"]);
-			objT.SetFecha(Request["fecha"]);
-			objT.SetHora(Request["hora"]);
+			objT.SetIdEquipo(Convert.ToInt32(Request["idEquipo"]));
 
 			//Enviamos los datos ala vista
 			ViewData["model"] = objT;
@@ -98,8 +103,7 @@
 			objT.SetId(Convert.ToInt32(Request["id"]));
 			objT.SetNombre(Request["txtNombre"]);
 			objT.SetDescripcion(Request["txtDescripcion"]);
-			objT.SetFecha(Request["txtFecha"]);
-			objT.SetHora(Request["txtHora"]);
+			objT.SetIdEquipo(Convert.ToInt32(Request["cbEquipo"]));
 
 			if (objT.EditarTarea() != 0)
 			{

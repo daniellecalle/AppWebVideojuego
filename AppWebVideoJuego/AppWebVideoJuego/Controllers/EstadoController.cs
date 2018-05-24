@@ -37,6 +37,8 @@
 			{
 				if (objEst.Guardar()!=0)
 				{
+					List<Estado> lista = objEst.ListarEstados();
+					ViewData["models"] = lista;
 					return View("ShowEstados");
 				}
 				else
@@ -45,7 +47,86 @@
 				}
 			}
 		}
-		
+
+		public ActionResult ShowEstados()
+		{
+			objEst = new Estado();
+			List<Estado> lista = objEst.ListarEstados();
+			ViewData["models"] = lista;
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult ShowEstado()
+		{
+			objEst = new Estado();
+
+			objEst.SetId(Convert.ToInt32(Request["id"]));
+			objEst.SetNombre(Request["nombre"]);
+			objEst.SetDescripcion(Request["descripcion"]);
+			Color c = ColorTranslator.FromHtml(Request["fvColor"]);
+			objEst.SetColor(ColorTranslator.ToHtml(c));
+
+			ViewData["model"] = objEst;
+
+ 			return View();
+		}
+
+		[HttpPost]
+		public ActionResult ShowFormEdit()
+		{
+			objEst = new Estado();
+
+			objEst.SetId(Convert.ToInt32(Request["id"]));
+			objEst.SetNombre(Request["nombre"]);
+			objEst.SetDescripcion(Request["descripcion"]);
+			Color c = ColorTranslator.FromHtml(Request["fvColor"]);
+			objEst.SetColor(ColorTranslator.ToHtml(c));
+
+			ViewData["model"] = objEst;
+
+			return View();
+
+		}
+
+		[HttpPost]
+		public ActionResult SaveFormEdit()
+		{
+			objEst = new Estado();
+
+			objEst.SetId(Convert.ToInt32(Request["id"]));
+			objEst.SetNombre(Request["txtNombre"]);
+			objEst.SetDescripcion(Request["txtDescripcion"]);
+			Color c = ColorTranslator.FromHtml(Request["fvColor"]);
+			objEst.SetColor(ColorTranslator.ToHtml(c));
+
+			if (objEst.Editar() != 0)
+			{
+				return View("exitoEditar");
+			}
+			else
+			{
+				return View("errorEditar");
+			}			
+		}
+
+		public ActionResult DeleteState()
+		{
+			objEst = new Estado();
+
+			objEst.SetId(Convert.ToInt32(Request["id"]));
+
+			if (objEst.Eliminar() != 0)
+			{
+				return View("exitoEliminar");
+			}
+			else
+			{
+				return View("errorEliminar");
+			}
+		}
+
+
 
 	}
 }

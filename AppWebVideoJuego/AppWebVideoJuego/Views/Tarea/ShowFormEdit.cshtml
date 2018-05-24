@@ -2,6 +2,7 @@
 @{
 	ViewBag.Title = "ShowFormEdit";
 	AppWebVideoJuego.Models.Tarea model = (AppWebVideoJuego.Models.Tarea)ViewData["model"];
+	List<AppWebVideoJuego.Models.EquipoDesarrollo> models = (List<AppWebVideoJuego.Models.EquipoDesarrollo>)ViewData["models"];
 
 }
 
@@ -9,7 +10,7 @@
 
 <form action="/Tarea/SaveFormEdit" method="post">
 	<h3><b>Editar Tarea N° @Html.Raw(model.GetId())</b></h3>
-	
+
 	<input type="hidden" name="id" value="@Html.Raw(model.GetId())" />
 
 	<div class="form-group">
@@ -19,27 +20,20 @@
 	</div>
 	<div class="form-group">
 		<label>Descripcion: </label>
-		<input type="text" name="txtDescripcion" 
-			   value="@Html.Raw(model.GetDescripcion())" class="form-control"/>
+		<input type="text" name="txtDescripcion"
+			   value="@Html.Raw(model.GetDescripcion())" class="form-control" />
 	</div>
 
 	<div class="form-group">
-		<label>Fecha: </label>
-		<input type="date" name="txtFecha" class="form-control"
-			   value="@Html.Raw(model.GetFecha())">
-	</div>
-
-	<div class="form-group">
-		<label>Hora: </label>
-		<input type="time" name="txtHora" class="form-control"
-			   value="@Html.Raw(model.GetHora())">
-	</div>
-
-	<div class="form-group">
-		<label>Seleccione Color Estado: </label>
-		<select name="cbEstado" class="form-control">
-			<option value=""></option>
+		<label>Seleccione Equipo: </label>
+		<select name="cbEquipo" class="form-control">
+			@foreach (var item in models)
+			{
+				<option value="@item.Id">@item.Nombre</option>
+			}
 		</select>
 	</div>
-	<input type="submit" name="btnGuardar" value="Guardar" class="btn btn-primary" />
+
+	<input type="submit" name="btnGuardar" value="Guardar" class="btn btn-primary" /> |
+	@Html.ActionLink("Atras", "ShowTareas", "Tarea", new { area = "" }, new { @class = "btn btn-success" })
 </form>

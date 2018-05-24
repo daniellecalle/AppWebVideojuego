@@ -1,0 +1,19 @@
+﻿
+@{
+	ViewBag.Title = "ShowEstado";
+	AppWebVideoJuego.Models.Estado model = (AppWebVideoJuego.Models.Estado)ViewData["model"];
+}
+
+<h2>Mostrar Estado</h2>
+
+<div class="panel panel-info">
+	<div class="panel-body">
+		<p><b>ID: </b> @Html.Raw(model.GetId())</p>
+		<p><b>Nombre: </b> @Html.Raw(model.GetNombre())</p>
+		<p><b>Descripcion: </b> @Html.Raw(model.GetDescripcion())</p>
+		<p><b>Color: </b> @Html.Raw(model.GetColor())</p>
+	</div>
+</div>
+
+@Html.ActionLink("Atras", "ShowEstados", "Estado", new { area = "" }, new { @class = "btn btn-success" })
+

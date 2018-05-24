@@ -17,20 +17,18 @@
 			private int id;
 			private string nombre;
 			private string descripcion;
-			private string fecha;
-			private string hora;
+			private int idEquipo;
 		#endregion
 
 		#region "Contructores"
 			public Tarea() { }
 
-			public Tarea(int id, string nombre, string descripcion, string fecha, string hora)
+			public Tarea(int id, string nombre, string descripcion, int idEquipo)
 			{
 				this.id = id;
 				this.nombre = nombre;
 				this.descripcion = descripcion;
-				this.fecha = fecha;
-				this.hora = hora;
+				this.idEquipo = idEquipo;
 			}
 		#endregion
 
@@ -55,26 +53,6 @@
 				this.descripcion = descripcion;
 			}
 
-			public string GetFecha()
-			{
-				return fecha;
-			}
-
-			public void SetFecha(string fecha)
-			{
-				this.fecha = fecha;
-			}
-
-			public string GetHora()
-			{
-				return hora;
-			}
-
-			public void SetHora(string hora)
-			{
-				this.hora = hora;
-			}
-
 			public int GetId()
 			{
 				return id;
@@ -83,6 +61,16 @@
 			public void SetId(int id)
 			{
 				this.id = id;
+			}
+
+			public int GetIdEquipo()
+			{
+				return idEquipo;
+			}
+
+			public void SetIdEquipo(int idEquipo)
+			{
+				this.idEquipo = idEquipo;
 			}
 
 			public bool Validar()
@@ -101,9 +89,8 @@
 					throw ex;
 				}
 
-				string sql = "INSERT INTO TBLTAREA (NOMBRE, DESCRIPCION, FECHA, HORA) " +
-						"VALUES ('" + GetNombre() + "', '" + GetDescripcion() + "', '" + GetFecha()
-						+ "', '" + GetHora() + "')";
+				string sql = "INSERT INTO TAREA (NOMBRE, DESCRIPCION, IDEQUIPO) " +
+						"VALUES ('" + GetNombre() + "', '" + GetDescripcion() + "', '" +GetIdEquipo()+ "')";
 
 				int n = con.operaracion(sql, a);
 
@@ -121,8 +108,8 @@
 				throw;
 			}
 
-			string sql = "UPDATE TBLTAREA SET NOMBRE='"+GetNombre()+"', DESCRIPCION='"+GetDescripcion()
-				+"', FECHA='"+GetFecha()+"', HORA='"+GetHora()+"' WHERE ID="+GetId();
+			string sql = "UPDATE TAREA SET NOMBRE='"+GetNombre()+"', DESCRIPCION='"+GetDescripcion()
+				+"' WHERE ID="+GetId();
 			int num = con.operaracion(sql, a);
 
 			return num;
@@ -139,45 +126,13 @@
 				throw;
 			}
 
-			string sql = "DELETE FROM TBLTAREA WHERE ID="+GetId();
+			string sql = "DELETE FROM TAREA WHERE ID="+GetId();
 			int num = con.operaracion(sql, a);
 
 			return num;
 		}
 
 		
-		/*public List<Tarea> ListarEquipos()
-		{ 
-
-			try
-			{
-				a = con.Conectar();
-			}
-			catch (Exception)
-			{
-				throw;
-			}
-
-			List<Tarea> datos = new List<Tarea>();
-			SqlDataReader d;
-
-			string sql = "SELECT E.ID, E.NOMBRE FROM TBLTAREA T INNER JOIN TBLEQUIPO E ON T.IDEQUIPO = E.ID";
-
-			d = con.Consulta(sql, a);
-
-			while (d.Read())
-			{
-				datos.Add(new Tarea()
-				{
-					idEquipo = Convert.ToInt32(d["ID"]),
-					nomEquipo = Convert.ToString(d["NOMBRE"])
-				});
-
-			}
-
-			return datos;
-
-		}*/
 
 		public List<Tarea> ListarTareas()
 		{
@@ -192,7 +147,7 @@
 
 				List<Tarea> datos = new List<Tarea>();
 
-				string sql = "SELECT * FROM TBLTAREA";
+				string sql = "SELECT * FROM TAREA";
 				SqlDataReader d = con.Consulta(sql, a);
 
 				while (d.Read())
@@ -202,8 +157,7 @@
 						id = Convert.ToInt32(d["ID"]),
 						nombre = Convert.ToString(d["NOMBRE"]),
 						descripcion = Convert.ToString(d["DESCRIPCION"]),
-						fecha = Convert.ToString(d["FECHA"]),
-						hora = Convert.ToString(d["HORA"])
+						idEquipo = Convert.ToInt32(d["IDEQUIPO"]),
 					});
 				}
 
@@ -232,8 +186,6 @@
 					id = Convert.ToInt32(d["ID"]),
 					nombre=Convert.ToString(d["NOMBRE"]),
 					descripcion = Convert.ToString(d["DESCRIPCION"]),
-					fecha = Convert.ToString(d["FECHA"]),
-					hora = Convert.ToString(d["HORA"]),
 				});
 			}
 

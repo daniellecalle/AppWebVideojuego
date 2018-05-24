@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "exitoEditar";
+}
+
+<div class="alert alert-success alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<strong>Exito!</strong>Registro Editado Exitosamente!
+</div>
+
+<center>
+	@Html.ActionLink("Atras", "ShowEstados", "Estado", new { area = "" }, new { @class = "btn btn-success" })
+</center>

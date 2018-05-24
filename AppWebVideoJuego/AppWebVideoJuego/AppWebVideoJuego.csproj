@@ -214,9 +214,9 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\ProductorInterno.cs" />
+    <Compile Include="Models\RecursoVideojuego.cs" />
     <Compile Include="Models\Tarea.cs" />
     <Compile Include="Models\TareaEstado.cs" />
-    <Compile Include="Models\Telefono.cs" />
     <Compile Include="Models\VideoJuego.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -307,6 +307,17 @@
     <Content Include="Views\Tarea\ShowFormEdit.cshtml" />
     <Content Include="Views\Tarea\exitoEditar.cshtml" />
     <Content Include="Views\Tarea\errorEditar.cshtml" />
+    <Content Include="Views\Estado\ShowEstado.cshtml" />
+    <Content Include="Views\Estado\ShowFormEdit.cshtml" />
+    <Content Include="Views\Estado\exitoEditar.cshtml" />
+    <Content Include="Views\Estado\exitoEliminar.cshtml" />
+    <Content Include="Views\Estado\errorEliminar.cshtml" />
+    <Content Include="Views\EquipoDesarrollo\ShowEquipo.cshtml" />
+    <Content Include="Views\EquipoDesarrollo\ShowFormEdit.cshtml" />
+    <Content Include="Views\EquipoDesarrollo\exitoEditar.cshtml" />
+    <Content Include="Views\EquipoDesarrollo\errorEditar.cshtml" />
+    <Content Include="Views\EquipoDesarrollo\exitoEliminar.cshtml" />
+    <Content Include="Views\EquipoDesarrollo\errorEliminar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

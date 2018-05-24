@@ -1,0 +1,23 @@
+﻿
+@{
+	ViewBag.Title = "ShowEquipo";
+	AppWebVideoJuego.Models.EquipoDesarrollo model = (AppWebVideoJuego.Models.EquipoDesarrollo)ViewData["model"];
+}
+
+<div class="container">
+	<br /><br />
+		<center>
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Equipo N° @Html.Raw(model.Id)</h3>
+				</div>
+				<div class="panel-body">
+					<p>
+						<b>Nombre: </b>@Html.Raw(model.Nombre)
+						<br />
+						<b>Descripcion: </b>@Html.Raw(model.Descripcion)
+					</p>
+				</div>
+			</div>
+		</center>
+</div>

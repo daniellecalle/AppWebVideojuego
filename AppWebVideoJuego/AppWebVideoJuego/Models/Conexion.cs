@@ -19,7 +19,7 @@
 		public SqlConnection Conectar()
 		{
 			SqlConnection conectar = new SqlConnection("Data Source=.;" +
-					"Initial Catalog=VIDEOJUEGO2;Integrated Security=SSPI;");
+					"Initial Catalog=PROYECTO;Integrated Security=SSPI;");
 
 			try
 			{

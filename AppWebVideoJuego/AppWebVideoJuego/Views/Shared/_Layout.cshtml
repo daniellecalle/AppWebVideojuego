@@ -29,11 +29,12 @@
 						<ul class="dropdown-menu">
 							<li>@Html.ActionLink("Crear Tarea", "Index", "Tarea")</li>
 							<li>@Html.ActionLink("Crear Estado", "Index", "Estado")</li>
-							<li>@Html.ActionLink("Crear Cliente", "Index", "Cliente")</li>
 							<li>@Html.ActionLink("Crear Equipo", "Index", "EquipoDesarrollo")</li>
-							<li>@Html.ActionLink("Crear Productor Interno", "Index", "ProductorInterno")</li>
-							<li>@Html.ActionLink("Crear Video Juego", "Index", "VideoJuego")</li>
-							<li>@Html.ActionLink("Tareas", "ShowAllTask", "Tarea")</li>
+							<li role="separator" class="divider"></li>
+							<li>@Html.ActionLink("Mostrar Tareas", "ShowTareas", "Tarea")</li>
+							<li>@Html.ActionLink("Mostrar Estados", "ShowEstados", "Estado")</li>
+							<li>@Html.ActionLink("Mostrar Equipos", "mostrarEquipos", "EquipoDesarrollo")</li>
+
 						</ul>
 					</li>
 				</ul>
