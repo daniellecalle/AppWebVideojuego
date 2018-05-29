@@ -147,7 +147,7 @@
 				throw;
 			}
 
-			string sql = "SELECT ID, NOMBRE FROM EQUIPO;";
+			string sql = "SELECT ID, DESCRIPCION FROM EQUIPO;";
 			SqlDataReader leer = con.Consulta(sql, a);
 
 			List<EquipoDesarrollo> listaEquipos = new List<EquipoDesarrollo>();
@@ -157,7 +157,7 @@
 				listaEquipos.Add(new EquipoDesarrollo()
 				{
 					id = Convert.ToInt32(leer["ID"]),
-					nombre = Convert.ToString(leer["NOMBRE"]),
+					nombre = Convert.ToString(leer["DESCRIPCION"]),
 				});
 			}
 

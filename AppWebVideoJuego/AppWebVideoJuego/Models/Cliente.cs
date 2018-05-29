@@ -6,54 +6,81 @@
 	using System.Linq;
 	using System.Web;
 
-	public class Cliente : Persona
+	public class Cliente
 	{
 		Conexion con = new Conexion();
 		SqlConnection a;
 
 		#region "Atributos"
-		private string nit;
-		private string tipoCliente;
+		private string cedula;
+		private string nombre;
+		private string apellido;
+		private string telefono;
+		private string direccion;
+		private string email;
 		#endregion
 
-		public Cliente() { }
-
-		#region "Contructores"
-		public Cliente(string nit, string tipoCliente, string cedula, string nombre,
-			string direccion, string apellido, string telefono)
-			: base(cedula, nombre, direccion, apellido, telefono)
+		public string Cedula
 		{
-			this.nit = nit;
-			this.tipoCliente = tipoCliente;
+			get { return cedula; }
+			set { cedula = value; }
 		}
 
-		#endregion
-
-		#region "Metodos Publicos"
-		public string GetNit()
+		public string Nombre
 		{
-			return nit;
+			get { return nombre; }
+			set { nombre = value; }
 		}
 
-		public void SetNit(string nit)
+		public string Apellido
 		{
-			this.nit = nit;
+			get { return apellido; }
+			set { apellido = value; }
 		}
 
-		public string GetTipoCliente()
+		public string Telefono
 		{
-			return tipoCliente;
+			get { return telefono; }
+			set { telefono = value; }
 		}
 
-		public void SetTipoCliente(string tipoCliente)
+		public string Direccion
 		{
-			this.tipoCliente = tipoCliente;
+			get { return direccion; }
+			set { direccion = value; }
+		}
+
+		public string Email
+		{
+			get { return email; }
+			set { email = value; }
 		}
 
 
-		public bool Validar2()
+		public int Guardar()
 		{
-			if (!String.IsNullOrEmpty(nit) || !String.IsNullOrEmpty(tipoCliente))
+			try
+			{
+				a = con.Conectar();
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+
+			string sql = "INSERT INTO CLIENTE VALUES ('"+Cedula+"', '"+Nombre+"', '"+Apellido
+				+"', '"+Telefono+"', '"+Direccion+"', '"+Email+"')";
+
+			int n = con.operaracion(sql, a);
+
+			return n;
+		}
+
+		public bool Validar()
+		{
+			if (!String.IsNullOrEmpty(cedula) || !String.IsNullOrEmpty(nombre) || !String.IsNullOrEmpty(apellido)
+				|| !String.IsNullOrEmpty(telefono) || !String.IsNullOrEmpty(direccion) || !String.IsNullOrEmpty(email))
 			{
 				return true;
 			}
@@ -63,27 +90,6 @@
 			}
 		}
 
-		public int Guardar()
-		{
-			try
-			{
-				a = con.Conectar();
-			}
-			catch (Exception ex)
-			{
-				throw ex;
-			}
-
-			string sql = "INSERT INTO TBLCLIENTE VALUES ('" + GetCedula() + "', '" + GetNombre()
-				+ "','" + GetApellido() + "', '" + GetTelefono() + "', '" + GetDireccion()
-				+ "', '" + GetNit() + "', '" + GetTipoCliente() + "')";
-
-			int n = con.operaracion(sql, a);
-
-			return n;
-		}
-
-		#endregion
 
 	}
 }

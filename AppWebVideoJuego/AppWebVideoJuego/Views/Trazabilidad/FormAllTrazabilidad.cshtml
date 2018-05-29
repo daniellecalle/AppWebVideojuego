@@ -1,0 +1,60 @@
+﻿
+@{
+	ViewBag.Title = "FormAllTrazabilidad";
+	List<AppWebVideoJuego.Models.Trazabilidad> models = (List<AppWebVideoJuego.Models.Trazabilidad>)ViewData["models"];
+}
+
+<div class="container">
+	<div class="alert alert-success alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<strong>Exito!</strong>Registro Ingresado Exitosamente!
+	</div>
+
+	<h2>Listado</h2>
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>IDTAREA</th>
+				<th>IDESTADO</th>
+				<th>FECHA</th>
+				<th>HORA</th>
+				<th colspan="2"></th>
+			</tr>
+		</thead>
+
+		@foreach (var item in models)
+		{
+			<tbody>
+				<tr>
+					<td>@item.Tarea.GetId()</td>
+					<td>@item.Estado.GetId()</td>
+					<td>@item.Fecha</td>
+					<td>@item.Hora</td>
+
+					<td>
+						<form method="post" action="/Trazabilidad/ShowFormEdit">
+							<input type="hidden" name="idTarea" value="@item.Tarea.GetId()" />
+							<input type="hidden" name="idEstado" value="@item.Tarea.GetId()" />
+							<input type="hidden" name="fecha" value="@item.Fecha" />
+							<input type="hidden" name="hora" value="@item.Hora" />
+							<input type="submit" name="Editar" value="Editar" class="btn btn-warning" />
+						</form>
+					</td>
+
+					<td>
+						<form method="post" action="/Trazabilidad/DeleteTrazabilidad">
+							<input type="hidden" name="idTarea" value="@item.Tarea.GetId()" />
+							<input type="hidden" name="idEstado" value="@item.Tarea.GetId()" />
+							<input type="submit" name="Eliminar" value="Eliminar" class="btn btn-danger" />
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		}
+	</table>
+
+	<center>
+		@Html.ActionLink("Nuevo", "Index", "Trazabilidad", new { area = "" }, new { @class = "btn btn-primary" })
+	</center>
+</div>

@@ -10,7 +10,46 @@
 		<div class="panel-heading">Nuevo Cliente</div>
 		<div class="panel-body">
 			<center>
-				@Html.Partial("_NuevoCliente");
+				<form method="post" action="/Cliente/Created">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Cedula: </label>
+								<input type="text" class="form-control" placeholder="Cedula cliente" 
+									   name="txtCedula">
+							</div>
+							<div class="form-group">
+								<label>Nombre: </label>
+								<input type="text" class="form-control" placeholder="Nombre cliente" 
+									   name="txtNombre">
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Apellido: </label>
+								<input type="text" class="form-control" placeholder="Apellido del Cliente" 
+									   name="txtApellido">
+							</div>
+							<div class="form-group">
+								<label>Telefono: </label>
+								<input type="text" class="form-control" placeholder="Telefono del Cliente" n
+									   ame="txtTelefono">
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<label>Direccion: </label>
+								<input type="text" class="form-control" placeholder="Direccion de Cliente" 
+									   name="txtDireccion">
+							</div>
+							<div class="form-group">
+								<label>Correo Electronico: </label>
+								<input type="email" class="form-control" placeholder="Email de Cliente" name="txtEmail">
+							</div>
+						</div>
+						<input type="submit" name="btnGuardar" value="Guardar" class="btn btn-primary" />
+					</div>
+				</form>
 			</center>
 		</div>
 	</div>

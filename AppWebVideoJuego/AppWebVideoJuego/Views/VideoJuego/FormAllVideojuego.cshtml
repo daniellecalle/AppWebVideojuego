@@ -1,0 +1,58 @@
+﻿
+@{
+	ViewBag.Title = "FormAllVideojuego";
+	List<AppWebVideoJuego.Models.VideoJuego> models = (List<AppWebVideoJuego.Models.VideoJuego>)ViewData["models"];
+}
+
+<div class="alert alert-success alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<strong>Exito!</strong>Registro Ingresado Exitosamente!
+</div>
+
+<h2>Lista de Videojuegos</h2>
+
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>OBJETIVO</th>
+			<th>PUBLICO OBJETIVO</th>
+			<th>COSTO</th>
+			<th>CEDULA CLIENTE</th>
+			<th>TAREA</th>
+			<th colspan="2"></th>
+		</tr>
+	</thead>
+
+	@foreach (var item in models)
+	{
+		<tbody>
+			<tr>
+				<td>@item.Objetivo</td>
+				<td>@item.PublicoObjetivo</td>
+				<td>@item.Costo</td>
+				<td>@item.Cliente.Cedula</td>
+				<td>@item.Tarea.GetId()</td>
+
+				<td>
+					<form method="post" action="/VideoJuego/ShowFormEdit">
+						<input type="hidden" name="objetivo" value="@item.Objetivo" />
+						<input type="hidden" name="publicoobjetivo" value="@item.PublicoObjetivo" />
+						<input type="hidden" name="costo" value="@item.Costo" />
+						<input type="hidden" name="Cedcliente" value="@item.Cliente.Cedula" />
+						<input type="hidden" name="IdTarea" value="@item.Tarea.GetId()" />
+						<input type="submit" name="Editar" value="Editar" class="btn btn-warning" />
+					</form>
+				</td>
+
+				<td>
+					<form method="post" action="/VideoJuego/DeleteVideojuego">
+						<input type="hidden" name="objetivo" value="@item.Id" />
+						<input type="submit" name="Eliminar" value="Eliminar" class="btn btn-danger" />
+					</form>
+				</td>
+			</tr>
+
+		</tbody>
+	}
+
+</table>

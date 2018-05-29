@@ -21,7 +21,7 @@
 		#endregion
 
 		#region "Contructores"
-			public Tarea() { }
+		public Tarea() { }
 
 			public Tarea(int id, string nombre, string descripcion, int idEquipo)
 			{
@@ -29,6 +29,7 @@
 				this.nombre = nombre;
 				this.descripcion = descripcion;
 				this.idEquipo = idEquipo;
+				
 			}
 		#endregion
 
@@ -77,6 +78,8 @@
 			{
 				return (!String.IsNullOrEmpty(nombre) || !String.IsNullOrEmpty(descripcion));
 			}
+
+
 
 			public int Guardar()
 			{

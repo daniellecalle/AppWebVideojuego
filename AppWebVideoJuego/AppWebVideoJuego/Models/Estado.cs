@@ -21,7 +21,7 @@
 		#endregion
 
 		#region "Constructores"
-			public Estado() { }
+		public Estado() { }
 
 			public Estado(int id, string nombre, string color, string descripcion)
 			{
@@ -74,7 +74,7 @@
 				this.descripcion = descripcion;
 			}
 
-			public bool Validar()
+		public bool Validar()
 			{
 				return (!String.IsNullOrEmpty(nombre) || !String.IsNullOrEmpty(color)
 					|| !String.IsNullOrEmpty(descripcion));

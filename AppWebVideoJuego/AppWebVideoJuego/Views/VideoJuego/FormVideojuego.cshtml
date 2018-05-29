@@ -1,46 +1,24 @@
 ﻿
 @{
 	ViewBag.Title = "FormVideojuego";
-}
+	List<AppWebVideoJuego.Models.Tarea> modelstareas = (List<AppWebVideoJuego.Models.Tarea>)ViewData["modelstareas"];
+	List<AppWebVideoJuego.Models.Cliente> modelsclientes = (List<AppWebVideoJuego.Models.Cliente>)ViewData["modelsclientes"];
+	}
 
-<div class="container">
-	<br />
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<center><b>Nuevo Video Juego</b></center>
-		</div>
-		<div class="panel-body">
-			<center>
-				<div class="row">
-					<form method="post" action="/VideoJuego/Created">
-						<div class="col-md-4">
-							<div class="form-group">
-								<label>Nombre: </label>
-								<input type="text" class="form-control" placeholder="Nombre del videojuego"
-									   name="txtNombre">
-							</div>
+	<div class="container">
+		<br />
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<center><b>Nuevo Video Juego</b></center>
+			</div>
+			<div class="panel-body">
+				<center>
+						<form method="post" action="/VideoJuego/CrearVideojuego">
 							<div class="form-group">
 								<label>Objetivo: </label>
 								<input type="text" class="form-control" placeholder="Objetivo del Video Juego"
 									   name="txtObjetivo" />
 							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<label>Tipo Recurso: </label>
-								<select name="cbTipoRecurso" class="form-control">
-									<option value="">Seleccione...</option>
-									<option value="1"></option>
-									<option value="2"></option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label>Nombre Recurso: </label>
-								<input type="text" class="form-control" placeholder="Nombre del Recurso videojuego"
-									   name="txtNombreRecurso" />
-							</div>
-						</div>
-						<div class="col-md-4">
 							<div class="form-group">
 								<label>Publico Objetivo: </label>
 								<input type="text" class="form-control" placeholder="Publico Objetivo"
@@ -51,12 +29,31 @@
 								<input type="number" class="form-control" placeholder="Costo del Video Juego"
 									   name="txtCosto" />
 							</div>
-						</div>
-						<input type="submit" name="btnGuardar" value="Guardar" class="btn btn-primary" />
-					</form>
-				</div>
-			</center>
+							<div class="form-group">
+								<label>Selecione Tarea: </label>
+								<select name="cbTarea" class="form-control">
+									<option value="0">Seleccione...</option>
+									@foreach (var tarea in modelstareas)
+									{
+										<option value="@tarea.GetId()">@tarea.GetNombre()</option>
+									}
+								</select>
+							</div>
+
+							<div class="form-group">
+								<label>Seleccine ID Cliente: </label>
+								<select name="cbCliente" class="form-control">
+									<option value="0">Seleccione...</option>
+									@foreach (var cliente in modelsclientes)
+									{
+										<option value="@cliente.Cedula)">@cliente.Nombre</option>
+									}
+								</select>
+							</div>
+							<input type="submit" name="btnGuardar" value="Guardar" class="btn btn-primary" />
+						</form>
+				</center>
+			</div>
 		</div>
 	</div>
-</div>
 

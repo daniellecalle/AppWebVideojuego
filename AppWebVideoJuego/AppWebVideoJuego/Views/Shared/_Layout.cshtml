@@ -30,11 +30,14 @@
 							<li>@Html.ActionLink("Crear Tarea", "Index", "Tarea")</li>
 							<li>@Html.ActionLink("Crear Estado", "Index", "Estado")</li>
 							<li>@Html.ActionLink("Crear Equipo", "Index", "EquipoDesarrollo")</li>
-							<li role="separator" class="divider"></li>
+							<li role="separator" class="divider">Administracion</li>
+							<li>@Html.ActionLink("Crear Tarea y Estado", "Index", "Trazabilidad")</li>
+							<li>@Html.ActionLink("Cliente", "Index", "Cliente")</li>
+							<li role="separator" class="divider">Listados</li>
 							<li>@Html.ActionLink("Mostrar Tareas", "ShowTareas", "Tarea")</li>
 							<li>@Html.ActionLink("Mostrar Estados", "ShowEstados", "Estado")</li>
 							<li>@Html.ActionLink("Mostrar Equipos", "mostrarEquipos", "EquipoDesarrollo")</li>
-
+							<li>@Html.ActionLink("Mostrar Tareas con Estados", "FormAllTrazabilidad", "Trazabilidad")</li>
 						</ul>
 					</li>
 				</ul>

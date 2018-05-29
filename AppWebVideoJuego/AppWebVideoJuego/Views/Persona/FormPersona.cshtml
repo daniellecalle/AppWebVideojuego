@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "FormPersona";
+}
+
+<div class="container">
+
+	<form method="post" action="/Persona/Verificar">
+
+		<label>Selecione Personal: </label>
+		<select name="cbPersona " class="form-control">
+			<option value="Cliente">Cliente</option>
+			<option value="Producto">Cliente</option>
+		</select>
+
+		<fieldset>
+			<legend>Informacion Basica</legend>
+			<b>Ingrese ID: </b><input type="text" name="cedula" class="form-control" /><br />
+			<b>Ingrese Nombre: </b><input type="text" name="nombre" class="form-control" /><br />
+			<b>Ingrese Telefono</b><input type="tel" name="telefono" class="form-control" /><br />
+			<input type="submit" name="GuardarPersona" class="btn btn-primary" />
+		</fieldset>
+	</form>
+
+	<br />
+
+	<div class="row">
+		<div class="col-md-4">
+			<form method="post" action="/Persona/CrearCliente">
+				<fieldset>
+					<legend>Informacion de Cliente</legend>
+					<input type="text" name="cedPersona" class="form-control" disabled/><br/>
+					<input type="text" name="NitCliente" class="form-control"disabled /><br />
+					Seleccione Tipo de Cliente: <select name="cbtipocliente" class="form-control" disabled>
+						<option value="Juridico">Juridico</option>
+						<option value="Natural">Natural</option>
+					</select><br />
+					<input type="submit" name="GuardarCliente" class="btn btn-primary" />
+				</fieldset>
+			</form>
+		</div>
+		<div class="col-md-4">
+			<form method="post" action="/Persona/CrearProductor">
+				<fieldset>
+					<legend>Informacion de Productor</legend>
+					Cedula ID: <input type="text" name="cedPersona" class="form-control" disabled /><br />
+					Cargo: <input type="text" name="cargo" class="form-control" disabled /><br />
+					<br />
+					<input type="submit" name="GuardarCliente" class="btn btn-primary" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
+
+</div>
+
