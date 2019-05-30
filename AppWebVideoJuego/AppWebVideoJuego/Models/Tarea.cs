@@ -85,7 +85,7 @@
 			{
 				try
 				{
-					a = con.Conectar();
+					a = con.Conectar();//retornamos objeto de conexion 
 				}
 				catch (Exception ex)
 				{
